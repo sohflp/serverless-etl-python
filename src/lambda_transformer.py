@@ -1,4 +1,4 @@
-from .util.common import TransformerUtils
+from util.common import TransformerUtils
 
 def handler(event, context):
 

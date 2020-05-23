@@ -1,8 +1,8 @@
 ingestor:
   handler: lambda_ingestor.handler
-  module: src/
+  module: src
   name: ${self:custom.customPrefix}-ingestor-${self:custom.customSulfix}
-  runtime: python3.8
+  runtime: python3.7
   # memorySize: 128
   # timeout: 6
   # reservedConcurrency: 10
@@ -11,16 +11,14 @@ ingestor:
     include:
       - src/lambda_ingestor.py
       - src/util/common.py
-    # exclude:
-    #   - requirements.txt
   events:
     - s3: s3bucketDataRaw
 
 transformer:
   handler: lambda_transformer.handler
-  module: src/
+  module: src
   name: ${self:custom.customPrefix}-transformer-${self:custom.customSulfix}
-  runtime: python3.8
+  runtime: python3.7
   # memorySize: 128
   # timeout: 6
   # reservedConcurrency: 10
@@ -29,8 +27,6 @@ transformer:
     include:
       - src/lambda_transformer.py
       - src/util/common.py
-    # exclude:
-    #   - requirements.txt
   events:
     - stream:
         type: dynamodb
