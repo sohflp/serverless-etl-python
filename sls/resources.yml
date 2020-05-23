@@ -1,4 +1,10 @@
 Resources:
+  # S3
+  s3bucketDataStaging:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: ${self:provider.environment.bucketDataStaging}
+
   # Dynamo DB
   dynamoMetadataTable:
     Type: 'AWS::DynamoDB::Table'

@@ -12,17 +12,11 @@ provider:
   s3:
     s3bucketDataRaw:
       name: ${self:provider.environment.bucketDataRaw}
-    s3bucketDataStaging:
-      name: ${self:provider.environment.bucketDataStaging}
 
 package:
   individually: true
   exclude:
-    - '.*/**'
-    - 'node_modules/**'
-    - 'sls/**'
-    - 'src/**'
-    - 'test/**'
+    - '**'
 
 # plugins:
 #   - serverless-python-requirements
