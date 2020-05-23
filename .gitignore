@@ -18,3 +18,9 @@ var/
 
 # Serverless directories
 .serverless
+
+# MacOS files
+*.DS_Store
+
+# Python directories and files
+*__pycache__*

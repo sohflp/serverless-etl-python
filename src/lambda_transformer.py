@@ -1,4 +1,4 @@
-from util.common import TransformerUtils
+from .util.common import TransformerUtils
 
 def handler(event, context):
 
@@ -24,15 +24,16 @@ def handler(event, context):
                 continue
             
             # Get the content of the file in S3
-            json = dataUtils.readFile(metadata["bucket"], metadata["fileKey"])
+            json = dataUtils.readS3File(metadata["bucket"], metadata["fileKey"])
             dataUtils.log("INFO", "Record[{}] => S3 => Read File Content".format(idx))
 
             # Transform your data before the transfer to the next bucket
             json = dataUtils.transform(json)
-            dataUtils.log("INFO", "Record[{}] => S3 => Transform JSON content".format(idx))
+            dataUtils.log("INFO", "Record[{}] => S3 => JSON content transformed".format(idx))
 
             # Transfer single file to the next bucket
-            dataUtils.transfer(self.getVariable('bucketDataStaging'), fileKey, json)
+            stagingBucket = dataUtils.getVariable('bucketDataStaging')
+            dataUtils.transfer(stagingBucket, fileKey, json)
             dataUtils.log("INFO", "Record[{}] => File transferred to staging bucket".format(idx))
         
         except (Exception) as error:
@@ -43,6 +44,6 @@ def handler(event, context):
     return {
         "statusCode": 200,
         "body": {
-            "message": "Ingestion concluded"
+            "message": "Transformation concluded"
         }
     }

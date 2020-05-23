@@ -2,8 +2,6 @@ import os
 import json
 import logging
 import boto3
-import psycopg2
-import pytz
 
 from boto3.dynamodb.conditions import Key
 from datetime import datetime
@@ -118,7 +116,7 @@ class TransformerUtils(IngestorUtils):
 
     def readS3File(self, bucket, fileKey):
         # Open file via parent method
-        fileContent = IngestorUtils.readFile(self, bucket, fileKey)
+        fileContent = IngestorUtils.readS3File(self, bucket, fileKey)
         return json.loads(fileContent)
 
     def transform(self, content):

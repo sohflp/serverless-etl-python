@@ -1,5 +1,5 @@
 ingestor:
-  handler: lambda_ingestor.handler
+  handler: src/lambda_ingestor.handler
   name: ${self:custom.customPrefix}-ingestor-${self:custom.customSulfix}
   runtime: python3.7
   # memorySize: 128
@@ -9,11 +9,12 @@ ingestor:
   package:
     include:
       - src/lambda_ingestor.py
+      - src/util/common.py
   events:
     - s3: s3bucketDataRaw
 
 transformer:
-  handler: lambda_transformer.handler
+  handler: src/lambda_transformer.handler
   name: ${self:custom.customPrefix}-transformer-${self:custom.customSulfix}
   runtime: python3.7
   # memorySize: 128
@@ -23,6 +24,7 @@ transformer:
   package:
     include:
       - src/lambda_transformer.py
+      - src/util/common.py
   events:
     - stream:
         type: dynamodb

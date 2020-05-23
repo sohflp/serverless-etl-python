@@ -1,4 +1,4 @@
-from util.common import IngestorUtils
+from .util.common import IngestorUtils
 
 def handler(event, context):
 
