@@ -18,9 +18,8 @@ package:
   exclude:
     - '**'
 
-# plugins:
-#   - serverless-python-requirements
-
+plugins:
+  - serverless-python-requirements
 custom: ${file(./sls/custom.yml)}
 
 functions: ${file(./sls/functions.yml)}
