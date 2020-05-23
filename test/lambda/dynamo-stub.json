@@ -1,0 +1,23 @@
+{
+  "Records":[
+     {
+        "eventID":"d6c7969694fe3edc77ba39b0a13d870b",
+        "eventName":"INSERT",
+        "eventVersion":"1.1",
+        "eventSource":"aws:dynamodb",
+        "awsRegion":"ap-southeast-2",
+        "dynamodb":{
+           "ApproximateCreationDateTime":1588507638.0,
+           "Keys":{
+              "fileKey":{
+                 "S":"test-data.json"
+              }
+           },
+           "SequenceNumber":"6077200000000010661627232",
+           "SizeBytes":63,
+           "StreamViewType":"KEYS_ONLY"
+        },
+        "eventSourceARN":"arn:aws:dynamodb:ap-southeast-2:000000000000:table/tableName/stream/2020-05-03T06:37:56.718"
+     }
+  ]
+}

@@ -1,0 +1,7 @@
+# Default values for the project in case the variables are not set
+defaultRegion: ap-southeast-2
+defaultEnvironment: dev
+
+# Custom prefix and sulfix for name convention
+customPrefix: simple-etl
+customSulfix: ${self:provider.region}-${self:provider.stage}

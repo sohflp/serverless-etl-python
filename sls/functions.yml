@@ -1,0 +1,32 @@
+ingestor:
+  handler: lambda_ingestor.handler
+  name: ${self:custom.customPrefix}-ingestor-${self:custom.customSulfix}
+  runtime: python3.7
+  # memorySize: 128
+  # timeout: 6
+  # reservedConcurrency: 10
+  role: iamRoleIngestor
+  package:
+    include:
+      - src/lambda_ingestor.py
+  events:
+    - s3: s3bucketDataRaw
+
+transformer:
+  handler: lambda_transformer.handler
+  name: ${self:custom.customPrefix}-transformer-${self:custom.customSulfix}
+  runtime: python3.7
+  # memorySize: 128
+  # timeout: 6
+  # reservedConcurrency: 10
+  role: iamRoleTransformer
+  package:
+    include:
+      - src/lambda_transformer.py
+  events:
+    - stream:
+        type: dynamodb
+        arn:
+          Fn::GetAtt:
+            - dynamoMetadataTable
+            - StreamArn
