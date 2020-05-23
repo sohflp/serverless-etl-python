@@ -129,3 +129,17 @@ Example:
 ```
 from .util.common import IngestorUtils
 ```
+
+## Delete project
+
+If you decided to delete the project there are two different approaches that can be used.
+
+1. Execute the command:
+
+```
+sls remove
+```
+
+2. Access your AWS account and search for the `CloudFormation` stack associated with the Serverless project and delete it.
+
+Important note: Before proceeding, make sure your S3 buckets don't have any files and delete any left over before starting the deletion.
