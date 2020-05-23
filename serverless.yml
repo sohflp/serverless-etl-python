@@ -2,7 +2,7 @@ service: serverless-etl-python
 
 provider:
   name: aws
-  runtime: python3.7
+  runtime: python3.8
   region: ${env:AWS_DEFAULT_REGION, self:custom.defaultRegion}
   stage: ${env:AWS_ENVIRONMENT, self:custom.defaultEnvironment}
   environment:
@@ -15,11 +15,10 @@ provider:
 
 package:
   individually: true
-  exclude:
-    - '**'
 
 plugins:
   - serverless-python-requirements
+
 custom: ${file(./sls/custom.yml)}
 
 functions: ${file(./sls/functions.yml)}

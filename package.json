@@ -1,0 +1,9 @@
+{
+  "name": "serverless-etl-python",
+  "description": "Simple ETL on AWS powered by Serverless, Lambda and Python",
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless-python-requirements": "^5.1.0"
+  }
+}
